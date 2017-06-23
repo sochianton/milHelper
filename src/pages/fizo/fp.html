@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="myAlert('Hello')">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let item of data.man">
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label color="primary">Норматив: </ion-label>
+        <ion-select plaseholder="Выберите норматив">
+          <ion-option>Bacon</ion-option>
+          <ion-option>Black Olives Black Olives Black Olives Black Olives Black Olives </ion-option>
+          <ion-option>8.Бег 100м. с высоким подниманием бедра</ion-option>
+          <ion-option>Mushrooms</ion-option>
+          <ion-option>Pepperoni</ion-option>
+          <ion-option>Sausage</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="number" placeholder="Результат"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-item>
+      <p>
+        <b>Баллы: </b>
+      </p>
+    </ion-item>
+
+
+  </ion-card>
+
+  <hr />
+
+  <div padding >
+    <button  ion-button block>
+      Добавить норматив
+      <ion-icon name="plus"></ion-icon>
+    </button>
+  </div>
+
+  <hr />
+
+
+
+
+</ion-content>

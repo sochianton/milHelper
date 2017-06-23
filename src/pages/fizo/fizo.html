@@ -1,0 +1,139 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-item-group  *ngFor="let item of data.man">
+
+      <ion-item-divider color="light">{{item.title}}</ion-item-divider>
+
+      <ion-item>
+        <h3>Don't Know What To Do!</h3>
+        <p bold [size]="fontSize" >I've had a pretty messed up day. If we just...</p>
+        <p>I've had a pretty messed up day. If we just...</p>
+        <p>I've had a pretty messed up day. If we just...</p>
+
+      </ion-item>
+  </ion-item-group>
+  <p>Размер шрифта {{fontSize}}</p>
+  <ion-input type="text" placeholder="размер шрафта" [(ngModel)]="fontSize"></ion-input>
+
+<hr />
+
+
+  <div padding >
+    <button  ion-button block>
+      Добавить параметр
+      <ion-icon name="plus"></ion-icon>
+    </button>
+  </div>
+
+<hr />
+
+<div padding>
+  <select class='select'>
+    <option>Пункт 1</option>
+    <option>Пункт 2</option>
+    <option>Пункт 3</option>
+    <option>Пункт 4</option>
+    <option>Пункт 1</option>
+    <option>Пункт 2</option>
+    <option>Пункт 3</option>
+    <option>Пункт 4</option>
+    <option>Пункт 1</option>
+    <option>Пункт 2</option>
+    <option>Пункт 3</option>
+    <option>Пункт 4</option>
+    <option>Пункт 1</option>
+    <option>Пункт 2</option>
+    <option>Пункт 3</option>
+    <option>Пункт 4</option>
+    <option>Пункт 1</option>
+    <option>Пункт 2</option>
+    <option>Пункт 3</option>
+    <option>Пункт 4</option>
+    <option>Пункт 1</option>
+    <option>Пункт 2</option>
+    <option>Пункт 3</option>
+    <option>Пункт 4</option>
+
+  </select>
+</div>
+
+<hr />
+
+<div padding>
+  <p>Количество кликов: {{clicks}}</p>
+  <p>Название машины: {{car}}</p>
+
+  <child-comp
+    [userName]="name"
+    [userAge]="age"
+    (onChanged)="onChanged($event)"
+    [(car)]="car"
+  #child>
+  </child-comp>
+
+  <button (click)="ch_increment()">+</button>
+  <button (click)="ch_decrement()">-</button>
+
+
+  <ion-item>
+
+      <ion-input type="text" placeholder="Введите имя" [(ngModel)]="name"></ion-input>
+
+      <ion-input type="text" placeholder="Возраст" [(ngModel)]="age"></ion-input>
+
+  </ion-item>
+</div>
+
+<hr />
+
+<ion-item>
+
+  <p *while="conditionP">
+      Первый параграф
+    </p>
+    <p *while="!conditionP">
+      Второй параграф
+    </p>
+
+  <p></p>
+  <p *ngIf="conditionP">
+    Привет
+  </p>
+  <p *ngIf="!conditionP">
+    Hello
+  </p>
+  <div *ngIf="conditionP; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>Then template</ng-template>
+  <ng-template #elseBlock>Else template</ng-template>
+  <button  ion-button block (click)="toggleCondRuEn()" >
+    Ru/En
+  </button>
+</ion-item>
+
+<hr />
+
+<p *ngFor="let i of infos">
+    <b>{{i.name}} :</b> {{i.price}}
+</p>
+
+<p>
+  <input class="form-control" [(ngModel)]="telname" placeholder = "Модель" />
+</p>
+<p>
+  <input type="number" class="form-control" [(ngModel)]="telprice" placeholder="Цена" />
+</p>
+<button ion-button block (click)="addItem(telname, telprice)">Добавить</button>
+
+
+
+
+
+</ion-content>
