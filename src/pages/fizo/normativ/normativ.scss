@@ -1,0 +1,5 @@
+normativ ion-card{
+  border:1px solid #ddd;
+  /*border-top: 4px solid #3369d1;*/
+  border-top: 4px solid map-get($colors, primary);
+}

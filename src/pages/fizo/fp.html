@@ -14,49 +14,35 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let item of data.man">
-
-    <ion-list>
-
-      <ion-item>
-        <ion-label color="primary">Норматив: </ion-label>
-        <ion-select plaseholder="Выберите норматив">
-          <ion-option>Bacon</ion-option>
-          <ion-option>Black Olives Black Olives Black Olives Black Olives Black Olives </ion-option>
-          <ion-option>8.Бег 100м. с высоким подниманием бедра</ion-option>
-          <ion-option>Mushrooms</ion-option>
-          <ion-option>Pepperoni</ion-option>
-          <ion-option>Sausage</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-input type="number" placeholder="Результат"></ion-input>
-      </ion-item>
-
-    </ion-list>
-
-    <ion-item>
-      <p>
-        <b>Баллы: </b>
-      </p>
-    </ion-item>
-
-
-  </ion-card>
+  <ng-template #cardsTarget></ng-template>
 
   <hr />
 
-  <div padding >
-    <button  ion-button block>
-      Добавить норматив
-      <ion-icon name="plus"></ion-icon>
-    </button>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+        <div>
+          <button  ion-button block (click)="addCard()">
+            <ion-icon name="add-circle"></ion-icon>
+             Добавить
+          </button>
+        </div>
+
+      </ion-col>
+      <ion-col>
+
+        <div>
+          <button  ion-button block color="danger" outline (click)="removeCard()">
+            Удалить
+            <ion-icon name="remove-circle"></ion-icon>
+          </button>
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <hr />
-
-
-
 
 </ion-content>
