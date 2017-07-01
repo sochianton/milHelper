@@ -21,7 +21,6 @@ export class FizoPage implements OnInit, OnDestroy{
   maxNumCards: number = 5;
   maxErrMsg :string = `Количество упражнений не может быть больше ${ this.maxNumCards }`;
   minErrMsg :string = `Количество упражнений не может быть меньше ${ this.minNumCards }`;
-  removeMsg: string = "Для удаления нажмите два раза";
   title: string = 'Калькулятор ФП';
 
   @ViewChild('cardsTarget', {read: ViewContainerRef})
@@ -73,10 +72,6 @@ export class FizoPage implements OnInit, OnDestroy{
       return ;
     }
     this.cardsCon.remove();
-  }
-
-  showRemoveMsg(){
-    this.myAlert(this.removeMsg);
   }
 
 }
