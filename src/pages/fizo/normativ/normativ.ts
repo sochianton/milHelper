@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { INormativeCard, DataProvider, ITitles} from  '../../../providers/data/data';
 
 
@@ -11,18 +11,19 @@ export class NormativComponent implements OnInit{
 
   //cards: INormativeCard[];
 
+  @Output() onBalChange: EventEmitter<number> = new EventEmitter<number>();
+
   result: number;
   resInBal: number = 0;
   uprNum: number;
+  @Input() vozrast:number = 0;
+  @Input() ves:number = 0;
   titles;
 
-  constructor(private data: DataProvider) {
-
-  }
+  constructor(private data: DataProvider) {}
 
   ngOnInit(){
     this.titles = this.data.getTitles();
-    // this.titles = [];
   }
 
   resCalculate(){
@@ -47,8 +48,6 @@ export class NormativComponent implements OnInit{
         cards.push(res[i])
       }
 
-      console.log(cards);
-
       for (let i in cards){
         let curCard = cards[i];
         if(curCard.uprN == this.uprNum){
@@ -62,9 +61,32 @@ export class NormativComponent implements OnInit{
         return;
       }
 
-      console.log(card);
-
+      // Таблица
       let tabl = card.results;
+      if(typeof tabl['mod'] !== "undefined"){
+        let tmpTabl: any;
+        let mod = 'vozrast';
+        for (let k in tabl){
+          if(k == 'mod'){
+            mod = tabl[k];
+            continue;
+          }
+          if(typeof tmpTabl === "undefined") tmpTabl = tabl[k];
+          if(mod == 'vozrast'){
+            if(this.vozrast >= parseInt(k)){
+              tmpTabl = tabl[k];
+            }
+          }
+          if(mod == 'ves'){
+            if(this.ves >= parseInt(k)){
+              tmpTabl = tabl[k];
+            }
+          }
+
+        }
+        tabl = tmpTabl;
+      }
+
       let mod:number = 1;
       let first: number;
       for (let ind in tabl){
@@ -93,12 +115,13 @@ export class NormativComponent implements OnInit{
           tmplRes = parseInt(key);
           continue;
         }
-        
+
         break;
 
       }
 
       this.resInBal = tmplRes;
+      this.onBalChange.emit(this.resInBal);
 
     });
 

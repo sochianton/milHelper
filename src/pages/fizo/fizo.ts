@@ -23,10 +23,14 @@ export class FizoPage implements OnInit, OnDestroy{
   minErrMsg :string = `Количество упражнений не может быть меньше ${ this.minNumCards }`;
   title: string = 'Калькулятор ФП';
 
+  vozrast:number = 30;
+  ves:number = 73;
+  totalResult:number=0;
+
   @ViewChild('cardsTarget', {read: ViewContainerRef})
   cardsCon: ViewContainerRef;
 
-  //cardsCompon: ComponentRef[];
+  cardsCompon: Array<ComponentRef<NormativComponent>> =[];
 
   // ---------------------------------------------
 
@@ -55,8 +59,20 @@ export class FizoPage implements OnInit, OnDestroy{
   addNormativComponent(){
     let componentFactory = this.resolver.resolveComponentFactory((new CardItem(NormativComponent, {})).component);
     let componentRef = this.cardsCon.createComponent(componentFactory);
+    this.cardsCompon.push(componentRef);
+    (<NormativComponent>componentRef.instance).vozrast = this.vozrast;
+    (<NormativComponent>componentRef.instance).ves = this.ves;
+    (<NormativComponent>componentRef.instance).onBalChange.subscribe(
+      res=>{
+        this.calculateResults();
+      }
+    );
   }
 
+  removeNormativComponent(i:number){
+    this.cardsCompon[i].destroy();
+    this.cardsCompon.splice(i,1);
+  }
 
   addCard(){
     if (this.cardsCon.length >= this.maxNumCards){
@@ -64,6 +80,7 @@ export class FizoPage implements OnInit, OnDestroy{
       return ;
     }
     this.addNormativComponent();
+    this.calculateResults();
   }
 
   removeCard(){
@@ -71,7 +88,16 @@ export class FizoPage implements OnInit, OnDestroy{
       this.myAlert(this.minErrMsg);
       return ;
     }
-    this.cardsCon.remove();
+    this.removeNormativComponent(this.cardsCon.length-1);
+    this.calculateResults();
+  }
+
+  calculateResults(){
+    this.totalResult=0;
+    for(let i in this.cardsCompon){
+      let card = this.cardsCompon[i];
+      this.totalResult += card.instance.resInBal;
+    }
   }
 
 }
