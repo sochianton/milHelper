@@ -26,38 +26,42 @@ export class DataProvider implements OnInit{
 
   }
 
-  getCards(): Observable<INormativeCard[]>{
+  getCards(g:string): Observable<INormativeCard[]>{
       return this.http.get('assets/ServerData.json')
                 .map((resp: Response) => {
                     let cardList = resp.json().normCards;
                     let cards : INormativeCard[] = [];
                     for(let index in cardList){
                       let card = cardList[index];
-                      cards.push({uprN: parseInt(card[1]), gender:card[0], title:card[2], results:card[3]});
+                      if(card[0] != g) continue;
+                      cards.push({uprN: parseFloat(card[1]), gender:card[0], title:card[2], results:card[3]});
                     }
                     return cards;
                 });
   }
 
-  getCards2(): Observable<INormativeCard[]>{
+  getAllCards(): Observable<INormativeCard[]>{
       return this.http.get('assets/ServerData.json')
                 .map((resp: Response) => {
+                  
                     let cardList = resp.json().normCards;
                     let cards : INormativeCard[] = [];
                     for(let index in cardList){
                       let card = cardList[index];
-                      cards.push({uprN: parseInt(card[1]), gender:card[0], title:card[2], results:card[3]});
+                      cards.push({uprN: parseFloat(card[1]), gender:card[0], title:card[2], results:card[3]});
                     }
                     return cards;
                 });
   }
 
-  getTitles(): Observable<Array<ITitles>>{
+  getTitles(g:string): Observable<Array<ITitles>>{
 
-    return this.getCards2().map((resp) => {
+    return this.getAllCards().map((resp) => {
       let titles: Array<ITitles> = [];
       for(let i in resp){
-        titles.push({uprN: resp[i].uprN, title:resp[i].uprN + '-' + resp[i].title});
+        let card = resp[i];
+        if(card.gender != g) continue;
+        titles.push({uprN: card.uprN, title:card.uprN + '-' + card.title});
       }
       return titles;
     });

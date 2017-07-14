@@ -4,7 +4,7 @@
 
     <ion-item>
       <ion-label color="primary">Норматив: </ion-label>
-      <ion-select plaseholder="Выберите норматив" [(ngModel)]="uprNum" (ngModelChange)="resCalculate()" >
+      <ion-select plaseholder="Выберите норматив" [(ngModel)]="uprNum" (ngModelChange)="onCardChanged()" >
         <ion-option *ngFor="let item of titles | async" [value]="item.uprN" >
           {{item.title}}
         </ion-option>
@@ -14,7 +14,7 @@
 
     <ion-item>
       <ion-label color="primary">Результат: </ion-label>
-      <ion-input type="number" placeholder="Результат" [(ngModel)]="result" (change)="resCalculate()" ></ion-input>
+      <ion-input type="number" placeholder="Результат" [(ngModel)]="result" (change)="onResultChanged()" ></ion-input>
     </ion-item>
 
   </ion-list>

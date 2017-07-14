@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Применить</span>
+        <ion-icon name="md-checkmark" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+      <ion-item>
+        <ion-segment color="primary" [(ngModel)]="config.gender">
+
+          <ion-segment-button value="m" >
+            Мужщина
+          </ion-segment-button>
+          <ion-segment-button value="w" >
+            Женщина
+          </ion-segment-button>
+
+        </ion-segment>
+      </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Возраст: </ion-label>
+      <ion-input type="number" placeholder="Возраст" [(ngModel)]="config.vozrast" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Вес: </ion-label>
+      <ion-input type="number" placeholder="Вес" [(ngModel)]="config.ves"></ion-input>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

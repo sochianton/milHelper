@@ -9,7 +9,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { FizoPage } from '../pages/fizo/fizo';
+import { FizoPage} from '../pages/fizo/fizo';
+import { FizoModalPage} from '../pages/fizo/fizoModalPage';
 import { DataProvider } from '../providers/data/data';
 import { NormativComponent } from '../pages/fizo/normativ/normativ';
 
@@ -21,6 +22,7 @@ import { HttpModule }   from '@angular/http';
     TabsPage,
     FizoPage,
     NormativComponent,
+    FizoModalPage,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { HttpModule }   from '@angular/http';
     MyApp,
     TabsPage,
     FizoPage,
-    NormativComponent
+    NormativComponent,
+    FizoModalPage,
   ],
   providers: [
     StatusBar,
