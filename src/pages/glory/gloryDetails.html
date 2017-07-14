@@ -1,0 +1,11 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{item.key}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+  <h3>{{item.title}}</h3>
+  <h4>{{item.date}}</h4>
+  <p [ngStyle]="{'text-align': 'justify'}" >{{item.dsrp}}</p>
+</ion-content>

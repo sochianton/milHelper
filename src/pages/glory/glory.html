@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-list>
+
+	<button ion-item *ngFor="let item of items | async" (click)="openDetails(item)" icon-start>
+		<h3>{{item.date}}</h3>
+		<h4>{{item.key}}</h4>
+		<p>{{item.title}}</p>
+    </button>
+
+  </ion-list>
+</ion-content>

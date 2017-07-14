@@ -14,6 +14,9 @@ import { FizoModalPage} from '../pages/fizo/fizoModalPage';
 import { DataProvider } from '../providers/data/data';
 import { NormativComponent } from '../pages/fizo/normativ/normativ';
 
+import { GloryPage} from '../pages/glory/glory';
+import { GloryDetails} from '../pages/glory/gloryDetails';
+
 import { HttpModule }   from '@angular/http';
 
 @NgModule({
@@ -23,6 +26,9 @@ import { HttpModule }   from '@angular/http';
     FizoPage,
     NormativComponent,
     FizoModalPage,
+
+    GloryPage,
+    GloryDetails,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +43,9 @@ import { HttpModule }   from '@angular/http';
     FizoPage,
     NormativComponent,
     FizoModalPage,
+
+    GloryPage,
+    GloryDetails
   ],
   providers: [
     StatusBar,

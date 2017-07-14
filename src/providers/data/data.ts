@@ -16,6 +16,20 @@ export interface ITitles{
   title: string;
 }
 
+/**
+* Интерфейс одного дня воинской славы
+* @param string key Ключевое слово
+* @param string title Заголовок
+* @param string date Дата
+* @param string dsrp Описание
+*/
+export interface IGloryDay{
+  key:string,
+  title: string,
+  date: string,
+  dsrp: string,
+}
+
 
 @Injectable()
 export class DataProvider implements OnInit{
@@ -27,7 +41,7 @@ export class DataProvider implements OnInit{
   }
 
   getCards(g:string): Observable<INormativeCard[]>{
-      return this.http.get('assets/ServerData.json')
+      return this.http.get('assets/FP.json')
                 .map((resp: Response) => {
                     let cardList = resp.json().normCards;
                     let cards : INormativeCard[] = [];
@@ -41,7 +55,7 @@ export class DataProvider implements OnInit{
   }
 
   getAllCards(): Observable<INormativeCard[]>{
-      return this.http.get('assets/ServerData.json')
+      return this.http.get('assets/FP.json')
                 .map((resp: Response) => {
                   
                     let cardList = resp.json().normCards;
@@ -65,6 +79,16 @@ export class DataProvider implements OnInit{
       }
       return titles;
     });
+
+  }
+
+  getGloryDays(): Observable<Array<IGloryDay>>{
+
+    return this.http.get('assets/GloryDays.json')
+      .map( (resp: Response) =>{
+        let list = resp.json();
+        return list;
+      });
 
   }
 
