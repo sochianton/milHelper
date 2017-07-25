@@ -21,10 +21,10 @@ $font-path: "../assets/fonts";
 // It's highly recommended to change the default colors
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
-// The "primary" color is the only required color in the map.
+// The "primary" color is the only required color in the map. 488aff
 
 $colors: (
-  primary:    #488aff,
+  primary:    #1c7908,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -32,7 +32,7 @@ $colors: (
 );
 
 
-// App iOS Variables
+// App iOS Variables 
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
@@ -76,3 +76,14 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+
+.item-input.ng-valid.input-has-value:not(.input-has-focus):last-child,
+.item-input.ng-valid.input-has-value:last-child,
+.item-input.input-has-focus,
+.item-input.input-has-focus:last-child,
+.item-inner
+{
+	border-bottom-color: #dedede !important;
+	box-shadow: none !important;
+}

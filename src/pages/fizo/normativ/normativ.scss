@@ -1,11 +1,8 @@
 normativ{
-  ion-card{
-    border:1px solid #ddd;
-    /*border-top: 4px solid #3369d1;*/
-    border-top: 4px solid map-get($colors, primary);
-  }
-  .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child {
-      border-bottom-color: map-get($colors, primary);
-      box-shadow: inset 0 -1px 0 0 map-get($colors, primary);
-  }
+	ion-card{
+		border:1px solid #ddd;
+		/*border-top: 4px solid #3369d1;*/
+		border-top: 4px solid map-get($colors, primary);
+	}
+	
 }

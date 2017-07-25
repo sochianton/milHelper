@@ -46,8 +46,8 @@
   <hr />
 
   <ion-card>
-    <ion-card-header>
-      Итого: {{totalResult}} баллов
+    <ion-card-header [ngStyle]="{ 'text-align':'center' }">
+      Итого: <span [ngStyle]="{'font-size': '20px', 'color':'#000', 'font-weight':'bold'}" >{{totalResult}}</span> баллов
     </ion-card-header>
 
   </ion-card>

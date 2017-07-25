@@ -1,6 +1,6 @@
 import { Component, ComponentRef, ViewChild, ViewContainerRef, ComponentFactoryResolver, Type, OnInit, OnDestroy} from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, ViewController, ModalController } from 'ionic-angular';
-import { INormativeCard, DataProvider} from  '../../providers/data/data';
+import { IonicPage, NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
+import { DataProvider} from  '../../providers/data/data';
 import { NormativComponent } from './normativ/normativ';
 import { FizoModalPage } from './fizoModalPage';
 
@@ -143,7 +143,6 @@ export class FizoPage implements OnInit, OnDestroy{
       this.refreshCardsConf();
 
       if(olds.gender != config.gender){
-        console.log("Изменился пол");
         this.clearCards();
       }
 

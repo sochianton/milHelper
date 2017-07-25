@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { GloryDetails } from './gloryDetails';
 import { DataProvider, IGloryDay } from  '../../providers/data/data';
 

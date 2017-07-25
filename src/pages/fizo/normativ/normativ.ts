@@ -2,7 +2,6 @@ import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { INormativeCard, DataProvider, ITitles} from  '../../../providers/data/data';
 import { IConfigData} from  '../fizo';
 import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
 
 
 @Component({
@@ -98,8 +97,7 @@ export class NormativComponent implements OnInit{
   */
   onResultChanged(){
 
-    if(typeof this.result === "undefined" || this.result == 0 || this.result == null)
-      console.log('Переменная result не определена или равна 0');
+    if(typeof this.result !== "undefined" || this.result != 0 || this.result != null)
 
     this.calcManage();
 
@@ -138,7 +136,6 @@ export class NormativComponent implements OnInit{
     {
         // Таблица. Деление результата по параметрам
         if(this.card == null){
-          console.log('Переменная card не определена');
           this.resInBal = tmplRes;
           return;
         }
@@ -146,19 +143,23 @@ export class NormativComponent implements OnInit{
         let tabl = this.card.results;
 
         if(typeof tabl['mod'] !== "undefined"){
-          let tmpTabl: any;
-          let mod = 'vozrast';
+
+          let tmpTabl=null;
+          let mod = tabl['mod'];
+
           for (let k in tabl){
-            if(k == 'mod'){
-              mod = tabl[k];
-              continue;
-            }
+
+
+            if(k == 'mod') continue ;
+
             if(typeof tmpTabl === "undefined") tmpTabl = tabl[k];
+
             if(mod == 'vozrast'){
               if(this.config.vozrast >= parseInt(k)){
                 tmpTabl = tabl[k];
               }
             }
+            
             if(mod == 'ves'){
               if(this.config.ves >= parseInt(k)){
                 tmpTabl = tabl[k];
@@ -166,6 +167,7 @@ export class NormativComponent implements OnInit{
             }
 
           }
+          
           tabl = tmpTabl;
         }
 
@@ -184,8 +186,6 @@ export class NormativComponent implements OnInit{
             break;
           }
         }
-
-        console.log(tabl);
 
         // Непосредственное нахождение результата
         for(let key in tabl){
